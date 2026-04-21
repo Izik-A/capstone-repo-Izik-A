@@ -3,11 +3,11 @@ The code used for both the button and pneumatic system were both made in In Ardu
 # Button Sensor
 
 const int buttonPin = A0;      
-int buttonState = HIGH;        // Current reading of the button
-int lastButtonState = HIGH;    // Previous reading of the button
+int buttonState = HIGH;       
+int lastButtonState = HIGH;
 
 void setup() {
-  pinMode(buttonPin, INPUT_PULLUP); // Use internal pull-up resistor
+  pinMode(buttonPin, INPUT_PULLUP);
   Serial.begin(9600);
 }
 
@@ -16,10 +16,10 @@ void loop() {
 
   // Detect press: LOW now, HIGH before
   if (lastButtonState == HIGH && buttonState == LOW) {
-    Serial.println("Button Pressed"); // Trigger once
+    Serial.println("Button Pressed"); 
   }
 
-  lastButtonState = buttonState; // Save state for next loop
+  lastButtonState = buttonState; 
 }
 
 # Pneumatic System
@@ -40,16 +40,16 @@ void loop() {
 
 # Combined Code (pneumatic works when button is pressed)
 
-const int buttonPin = A0;      // Button on A0
-const int solenoidPin = 7;     // Solenoid valve control pin
+const int buttonPin = A0;
+const int solenoidPin = 7;
 
 int buttonState = HIGH;
 int lastButtonState = HIGH;
 
 void setup() {
-  pinMode(buttonPin, INPUT_PULLUP);  // Button with internal pull-up
-  pinMode(solenoidPin, OUTPUT);      // Solenoid output
-  digitalWrite(solenoidPin, LOW);    // Make sure it's OFF
+  pinMode(buttonPin, INPUT_PULLUP); 
+  pinMode(solenoidPin, OUTPUT);     
+  digitalWrite(solenoidPin, LOW);    
   Serial.begin(9600);
 }
 
@@ -62,9 +62,9 @@ void loop() {
 
     Serial.println("Pneumatic Activated");
 
-    digitalWrite(solenoidPin, HIGH);   // Turn ON pneumatic valve
-    delay(500);                       // Keep ON for 1 second
-    digitalWrite(solenoidPin, LOW);    // Turn OFF
+    digitalWrite(solenoidPin, HIGH);
+    delay(500);     
+    digitalWrite(solenoidPin, LOW);
   }
 
   lastButtonState = buttonState;
