@@ -2,7 +2,7 @@ The code used for both the button and pneumatic system were both made in In Ardu
 
 # Button Sensor
 
-const int buttonPin = A0;      // Pin connected to NO
+const int buttonPin = A0;      
 int buttonState = HIGH;        // Current reading of the button
 int lastButtonState = HIGH;    // Previous reading of the button
 
