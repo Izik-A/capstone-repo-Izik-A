@@ -1,6 +1,7 @@
 The code used for both the button and pneumatic system were both made in In Arduino's coding language, C++. The following codes are listed below and will be added upon as more developments in the project occur.
 
 # Button Sensor
+'''cpp
 
 const int buttonPin = A0;      
 
@@ -22,7 +23,7 @@ void loop() {
 
   lastButtonState = buttonState; 
 }
-
+'''
 # Pneumatic System
 
 void setup() {
@@ -35,7 +36,7 @@ void loop() {
   delay(1000);                       
   digitalWrite(7, LOW);    
   delay(1000);                       
-}
+} 
 
 
 
