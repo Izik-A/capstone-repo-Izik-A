@@ -3,6 +3,7 @@ The code used for both the button and pneumatic system were both made in In Ardu
 # Button Sensor
 
 const int buttonPin = A0;      
+
 int buttonState = HIGH;       
 int lastButtonState = HIGH;
 
