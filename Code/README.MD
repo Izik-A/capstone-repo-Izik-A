@@ -25,7 +25,7 @@ void loop() {
 }
 ```
 # Pneumatic System
-
+```
 void setup() {
 
   pinMode(7, OUTPUT);
@@ -38,10 +38,10 @@ void loop() {
   delay(1000);                       
 } 
 
-
+```
 
 # Combined Code (pneumatic works when button is pressed)
-
+```
 const int buttonPin = A0;
 const int solenoidPin = 7;
 
@@ -71,3 +71,4 @@ void loop() {
 
   lastButtonState = buttonState;
 }
+```
