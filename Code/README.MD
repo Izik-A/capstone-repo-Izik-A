@@ -72,3 +72,72 @@ void loop() {
   lastButtonState = buttonState;
 }
 ```
+
+
+# Full system with a safety
+
+```
+#include <LiquidCrystal.h>
+
+const int buttonPin = A0;      
+const int solenoidPin = 7;     
+const int pirPin = 2;
+int count = 0;                 
+
+int buttonState = HIGH;
+int lastButtonState = HIGH;
+int motionDetected = LOW;
+
+
+LiquidCrystal lcd(11, 12, 5, 6, 3, 4);
+
+void setup() {
+  pinMode(buttonPin, INPUT_PULLUP);
+  pinMode(solenoidPin, OUTPUT);
+  pinMode(pirPin, INPUT);
+  digitalWrite(solenoidPin, LOW);
+  
+  lcd.begin(8, 2); 
+  Serial.begin(9600);
+
+  lcd.setCursor(0, 0);
+  lcd.print("SYSTEM");
+  lcd.setCursor(0, 1);
+  lcd.print("READY");
+  delay(2000);
+}
+
+void loop() {
+  buttonState = digitalRead(buttonPin);
+  motionDetected = digitalRead(pirPin);
+
+
+  if (motionDetected == HIGH) {
+    digitalWrite(solenoidPin, LOW); 
+    lcd.setCursor(0, 0);
+    lcd.print("WARNING ");
+    lcd.setCursor(0, 1);
+    lcd.print("MOTION! ");
+    delay(500);
+  } 
+  else {
+    lcd.setCursor(0, 0);
+    lcd.print("Count:  ");
+    lcd.setCursor(7, 0);
+    lcd.print(count);
+    lcd.setCursor(0, 1);
+    lcd.print("SAFE    ");
+
+    if (lastButtonState == HIGH && buttonState == LOW) {
+      count++;
+      Serial.println("Pneumatic Activated");
+
+      digitalWrite(solenoidPin, HIGH);   
+      delay(500);                        
+      digitalWrite(solenoidPin, LOW);    
+    }
+  }
+
+  lastButtonState = buttonState;
+}
+```
