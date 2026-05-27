@@ -1,1 +1,1 @@
-Describe your 3D models here.
+The 3D models used here were originally used throughout the build process, however as more changes were made to the final build, we collectively deemed that they wre not only pointless but somewhat of a nuisance to the progress and effectiveness of how good we could make the build.
